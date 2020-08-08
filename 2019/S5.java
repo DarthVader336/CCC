@@ -24,7 +24,7 @@ public class S5 {
                 for(int j=0;j<=i;j++){
                     sum+=a[i][j];
                 }
-            }
+            } 
             System.out.println(sum); return;
         }
         
