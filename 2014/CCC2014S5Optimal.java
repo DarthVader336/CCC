@@ -21,7 +21,10 @@ public class CCC14S5 {
                 
             }
             dist=x[i]*x[i]+y[i]*y[i];
-            dis[cnt]=(long)(dist<<32)+i*(1<<16)+N; cnt++;
+            dis[cnt]=(long)(dist<<32)+i*(1<<16)+N; cnt++;//The only difference between this and the previous version
+            //Is that this uses simpler data structures
+            //long is used represent an edge
+            //Two arrays are used to track the points
         }
         Arrays.sort(dis);
         
@@ -40,7 +43,8 @@ public class CCC14S5 {
             b=(int) dis[i]%(1<<16);
             
             if(b==N){
-                if(curdist[a]<(int) (dis[i]/(1<<30))/4){
+                if(curdist[a]<(int) (dis[i]/(1<<30))/4){//Note 1<<30 is positive but 1<<31 is not
+                    //When dividing smth by 1<<32, divide by 1<<30 then 1<<2
                     dp[b]=Math.max(dp[a]+1,dp[b]);
                     save[a]=dp[a];
                     curdist[a]=(int) (dis[i]/(1<<30))/4;
